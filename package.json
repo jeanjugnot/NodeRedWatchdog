@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node-red -u /data -p 1880"
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-red-contrib-tuya-smart": "^5.3.3"
+  }
 }
 
