@@ -1,0 +1,86 @@
+[
+    {
+        "id": "http_in_ping",
+        "type": "http in",
+        "z": "cloud_ping_flow",
+        "name": "HTTP Ping In",
+        "url": "/ping",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 100,
+        "wires": [["check_ping"]]
+    },
+    {
+        "id": "check_ping",
+        "type": "function",
+        "z": "cloud_ping_flow",
+        "name": "Simulate Ping Check",
+        "func": "// Simulate success/failure for testing\n// In real usage, assume HA ping = success\nif (Math.random() < 0.8) {\n    msg.status = \"success\";\n} else {\n    msg.status = \"failed\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 100,
+        "wires": [["switch_ping"]]
+    },
+    {
+        "id": "switch_ping",
+        "type": "switch",
+        "z": "cloud_ping_flow",
+        "name": "Check Ping Result",
+        "property": "status",
+        "propertyType": "msg",
+        "rules": [
+            {"t": "eq", "v": "success", "vt": "str"},
+            {"t": "eq", "v": "failed", "vt": "str"}
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 580,
+        "y": 100,
+        "wires": [
+            [], // success → do nothing
+            ["tuya_relay", "mobile_notify"]
+        ]
+    },
+    {
+        "id": "tuya_relay",
+        "type": "debug",
+        "z": "cloud_ping_flow",
+        "name": "Tuya Relay ON (Placeholder)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 800,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "mobile_notify",
+        "type": "debug",
+        "z": "cloud_ping_flow",
+        "name": "Push Notification (Placeholder)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 820,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "http_response",
+        "type": "http response",
+        "z": "cloud_ping_flow",
+        "name": "HTTP Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 800,
+        "y": 200,
+        "wires": []
+    }
+]
