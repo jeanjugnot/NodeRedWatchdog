@@ -1,0 +1,11 @@
+1. Use Environment Variables in Node-RED
+
+In Render, go to Settings → Environment and create variables:
+
+Name	Value
+TUYA_DEVICE_ID	    your device ID
+TUYA_ACCESS_ID	    your Tuya Access ID
+TUYA_ACCESS_SECRET	your Tuya Access Secret
+TUYA_REGION	        your Tuya region (e.g., EU)
+PUSHOVER_USER	      your Pushover user key
+PUSHOVER_TOKEN	    your Pushover API token
