@@ -1,7 +1,7 @@
 1. Use Environment Variables in Node-RED
 
-In Render, go to Settings → Environment and create variables:
-
+In cloud app, go to Settings → Environment and create variables:
+Get values from https://platform.tuya.com/cloud
 Name	Value
 TUYA_DEVICE_ID	    your device ID
 TUYA_ACCESS_ID	    your Tuya Access ID
