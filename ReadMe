@@ -1,8 +1,10 @@
-1. Use Environment Variables in Node-RED
+This small project uses docker and Node Red in a cloud application as watchdog function to home assistant
+Home Assistant is expected to ping cloud Node Red every 5min maximum otherwise Node Red will switch on a tuya relay (NC contact) to recycle the Home Assistant PI power.
 
-In cloud app, go to Settings → Environment and create variables:
 Get values from https://platform.tuya.com/cloud
-Name	Value
+In cloud app, go to Settings → Environment and create variables:
+Use below Environment Variables in Node-RED
+Name	              Value
 TUYA_DEVICE_ID	    your device ID
 TUYA_ACCESS_ID	    your Tuya Access ID
 TUYA_ACCESS_SECRET	your Tuya Access Secret
