@@ -1,0 +1,12 @@
+# Use official Node-RED image
+FROM nodered/node-red:latest
+
+# Copy your flow JSON into Node-RED data folder
+COPY flows.json /data/flows.json
+
+# Expose the port (Render will use PORT env variable)
+ENV PORT 1880
+EXPOSE 1880
+
+# Start Node-RED
+CMD ["npm", "start", "--", "--userDir", "/data", "-p", "1880"]
